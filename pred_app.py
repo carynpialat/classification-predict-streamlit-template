@@ -10,6 +10,8 @@ from urllib import request
 import seaborn as sns
 import matplotlib.pyplot as plt
 nlp = spacy.load('en_core_web_sm')
+import wordcloud
+from wordcloud import WordCloud
 
 #Vectorizer
 tweet_vectorizer = open("resources/tfidfvect.pkl","rb")
@@ -41,7 +43,7 @@ def main():
         st.info("Public views on Climate change")
         pics = {"Obama": "https://i.insider.com/5ef28394aee6a819e52ef5a7?width=1100&format=jpeg&auto=webp"}
         def person_of_interest(raw):
-            data = raw[0:800]
+            data = raw[0:700]
             for index, row in data.iterrows():
                 doc=nlp(row['message'])
                 if doc.ents:
@@ -55,7 +57,7 @@ def main():
     #Building out the EDA page
     if selection == "Exploratory Data Analysis":
         st.title("Insight on sampled data")
-        st.info("More than 50% of the sampled data are pro Climate Change")
+        st.info("Sentiment Distribution")
         raw.loc[(raw.sentiment == -1),'sentiment']='Anti'
         raw.loc[(raw.sentiment == 0),'sentiment']='Neutral'
         raw.loc[(raw.sentiment == 1),'sentiment']='Pro'
@@ -65,6 +67,13 @@ def main():
         plt.title('Frequency Distribution of sentiment', fontsize=22)
         plt.ylabel('Count', fontsize=22)
         plt.xlabel('sentiment', fontsize=22)
+        st.pyplot()
+
+        st.info("Word frequency")
+        #Wordcloud of tweets
+        wordcloud2 = WordCloud().generate(' '.join(raw['message']))
+        plt.imshow(wordcloud2)
+        plt.axis("off")
         st.pyplot()
 
         st.info("Parts of speech distribution per class")

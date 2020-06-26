@@ -40,10 +40,11 @@ def main():
         st.title("Climate Change, A hoax or a real threat??")
         st.markdown("Climate change is a long-term change in the average weather patterns that have come to define Earth's local, regional and global climates.")
         st.markdown("Changes observed in Earth's climate since the early 20th century are primarily driven by human activities, particularly fossil fuel burning, which increases heat-trapping greenhouse gas levels in Earth's atmosphere, raising Earth's average surface temperature. These human-produced temperature increases are commonly referred to as global warming. Natural processes can also contribute to climate change, including internal variability(e.g., cyclical ocean patterns like Niño, La Niña and the Pacific Decadal Oscillation) and external forcings (e.g., volcanic activity, changes in the Sun's energy output, variations in Earth's orbit.                         https://climate.nasa.gov/resources/global-warming-vs-climate-change/")
+        st.image("resources/weather_comparison.png")
         st.info("Public views on Climate change")
         pics = {"Obama": "https://i.insider.com/5ef28394aee6a819e52ef5a7?width=1100&format=jpeg&auto=webp"}
         def person_of_interest(raw):
-            data = raw[0:700]
+            data = raw[0:600]
             for index, row in data.iterrows():
                 doc=nlp(row['message'])
                 if doc.ents:

@@ -196,6 +196,31 @@ def main():
             result = get_keys(prediction,prediction_labels)
             st.success("Tweet Categorized as :: {}".format(result))
 
+            if result == "Pro":
+                st.title("Be the change you want to see")
+                image = {"change": "https://image.slidesharecdn.com/appealtoallpeoplehelpstopclimatechange-150504202754-conversion-gate01/95/appeal-to-all-people-help-stop-climate-change-1-638.jpg?cb=1449116204"}
+                st.image(image["change"])
+                st.info("Ways you can make a difference")
+                st.markdown("1. Speak up! Talk about climate change with your friends, family, community and colleagues. Raise awareness")
+                st.markdown("2. Power your home with renewable energy")
+                image2 = {"energy": "https://assets.nrdc.org/sites/default/files/styles/full_content--retina/public/media-uploads/clis6_797583_2400.jpg?itok=LFgM3j1E"}
+                st.image(image2["energy"])
+                st.markdown("3. Invest in energy-efficient appliances.")
+                st.markdown("4. Reduce water waste")
+                st.markdown("5. Buy better bulbs")
+                st.markdown("6. Drive a fuel-efficient vehicle")
+                st.markdown("7. Recycle")
+                image3 = {"Recycle": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR-rdNujc00Ld94WkfudOHuiIwtc_tb0czbKQ&usqp=CAU"}
+                st.image(image3["Recycle"])
+                st.info("Food for thought")
+                image4 = {"thought": "https://www.news-medical.net/image.axd?picture=2019%2F6%2Fshutterstock_630429824.jpg"}
+                st.image(image4["thought"])
+            elif result == "Neutral" or result == "Anti":
+                st.info("How can this be good for anyone")
+                image5 = {"change": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2011/11/9/1320867220617/Oil-refinery-in-Canada-007.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMTEucG5n&enable=upscale&s=482667f37616904d44363f8367c41bca"}
+                st.image(image5["change"])
+            
+
 
 if __name__ == '__main__':
     main()

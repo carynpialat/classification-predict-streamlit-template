@@ -216,11 +216,11 @@ def main():
                 video = {"vid": "https://youtu.be/8YQIaOldDU8"}
                 st.video(video['vid'])
             
-            st.subheader("Fake news websites")
-            status = st.radio("Do you consume online news?", ("Yes", "No"))
-            if status == "Yes":
-                st.success("Avoid these websites: https://abcnews.com.co, https://conservativedailypost.com, https://www.newspunch.com, https://www.hinnews.com, https://www.trendsdaily.co.za, https://www.newsexaminer.com/")
-                st.subheader("*This is not an exhaustive list but the most infamous")
+        st.subheader("Fake news websites")
+        status = st.radio("Do you consume online news?", ("Yes", "No"))
+        if status == "Yes":
+            st.success("Avoid these websites: https://abcnews.com.co, https://conservativedailypost.com, https://www.newspunch.com, https://www.hinnews.com, https://www.trendsdaily.co.za, https://www.newsexaminer.com/")
+            st.subheader("*This is not an exhaustive list but the most infamous")
 
 if __name__ == '__main__':
     main()

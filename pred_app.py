@@ -1,5 +1,3 @@
-pip install spacy
-pip install wordcloud
 import  streamlit as st
 import joblib,os
 import pandas as pd

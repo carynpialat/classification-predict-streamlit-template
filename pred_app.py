@@ -1,12 +1,10 @@
+pip install spacy
+pip install wordcloud
 import  streamlit as st
 import joblib,os
 import pandas as pd
 import spacy
-import requests
-from bs4 import BeautifulSoup
-import urllib
 import re
-from urllib import request
 import seaborn as sns
 import matplotlib.pyplot as plt
 nlp = spacy.load('en_core_web_sm')
@@ -14,7 +12,7 @@ import wordcloud
 from wordcloud import WordCloud
 
 #Vectorizer
-tweet_vectorizer = open("resources/tfidfvect.pkl","rb")
+tweet_vectorizer = open("models/new_vectorizer.pkl","rb")
 tweet_cv = joblib.load(tweet_vectorizer)
 
 #Load Raw Data
@@ -175,24 +173,21 @@ def main():
     if selection == "Prediction":
         st.title("Text Prediction")
         tweet = st.text_area("Enter Tweet", "Type Here")
-        all_ml_models = ["Logistic_Regression","Support_Vector","KNN","Naive Bayes"]
+        all_ml_models = ["Linear_Support_Vector","Support_Vector","Naive Bayes"]
         model_choice = st.selectbox("Choose ML Mode",all_ml_models)
 
         prediction_labels =  {'Anti':-1,  'Neutral' :0 , 'Pro' :1, 'News':2}
         if st.button("Classify"):
             st.text("Original test ::\n{}".format(tweet))
             vect_text = tweet_cv.transform([tweet]).toarray()
-            if model_choice == "Logistic_Regression":
-                predictor = load_model("resources/Logistic_regression.pkl")
-                prediction = predictor.predict(vect_text)
-            elif model_choice == "Support_Vector":
-                predictor = load_model("resources/linearsvc_classifier.pkl")
-                prediction = predictor.predict(vect_text)
-            elif model_choice == "KNN":
-                predictor = load_model("fff.pkl")
+            if model_choice == "Linear_Support_Vector":
+                predictor = load_model("models/linearsvc_classifier.pkl")
                 prediction = predictor.predict(vect_text)
             elif model_choice == "Naive Bayes":
-                predictor = load_model("fff.pkl")
+                predictor = load_model("models/cnb_classifier.pkl")
+                prediction = predictor.predict(vect_text)
+            elif model_choice == "Support_Vector":
+                predictor = load_model("models/svc_classifier.pkl")
                 prediction = predictor.predict(vect_text)
             result = get_keys(prediction,prediction_labels)
             st.success("Tweet Categorized as :: {}".format(result))

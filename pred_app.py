@@ -171,7 +171,7 @@ def main():
     if selection == "Prediction":
         st.title("Text Prediction")
         tweet = st.text_area("Enter Tweet", "Type Here")
-        all_ml_models = ["Linear_Support_Vector","Support_Vector","Naive Bayes"]
+        all_ml_models = ["Linear_Support_Vector","Logistic_Regression","Naive Bayes"]
         model_choice = st.selectbox("Choose ML Mode",all_ml_models)
 
         prediction_labels =  {'Anti':-1,  'Neutral' :0 , 'Pro' :1, 'News':2}
@@ -182,10 +182,10 @@ def main():
                 predictor = load_model("models/linearsvc_classifier.pkl")
                 prediction = predictor.predict(vect_text)
             elif model_choice == "Naive Bayes":
-                predictor = load_model("models/cnb_classifier.pkl")
+                predictor = load_model("models/cnb.pkl")
                 prediction = predictor.predict(vect_text)
-            elif model_choice == "Support_Vector":
-                predictor = load_model("models/svc_classifier.pkl")
+            elif model_choice == "Logistic_Regression":
+                predictor = load_model("models/logreg.pkl")
                 prediction = predictor.predict(vect_text)
             result = get_keys(prediction,prediction_labels)
             st.success("Tweet Categorized as :: {}".format(result))
@@ -216,7 +216,11 @@ def main():
                 video = {"vid": "https://youtu.be/8YQIaOldDU8"}
                 st.video(video['vid'])
             
-
+            st.subheader("Fake news websites")
+            status = st.radio("Do you consume online news?", ("Yes", "No"))
+            if status == "Yes":
+                st.success("Avoid these websites: https://abcnews.com.co, https://conservativedailypost.com, https://www.newspunch.com, https://www.hinnews.com, https://www.trendsdaily.co.za, https://www.newsexaminer.com/")
+                st.subheader("*This is not an exhaustive list but the most infamous")
 
 if __name__ == '__main__':
     main()

@@ -112,6 +112,7 @@ def main():
             a.plot(kind='bar')
             st.pyplot()
 
+        
         st.info("Entity recognition distribution per class")
         def count_ent(raw, sentiment):
             ent_dict = {}
@@ -185,7 +186,7 @@ def main():
                 predictor = load_model("resources/Logistic_regression.pkl")
                 prediction = predictor.predict(vect_text)
             elif model_choice == "Support_Vector":
-                predictor = load_model("fff.pkl")
+                predictor = load_model("resources/linearsvc_classifier.pkl")
                 prediction = predictor.predict(vect_text)
             elif model_choice == "KNN":
                 predictor = load_model("fff.pkl")
@@ -216,9 +217,11 @@ def main():
                 image4 = {"thought": "https://www.news-medical.net/image.axd?picture=2019%2F6%2Fshutterstock_630429824.jpg"}
                 st.image(image4["thought"])
             elif result == "Neutral" or result == "Anti":
-                st.info("How can this be good for anyone")
-                image5 = {"change": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2011/11/9/1320867220617/Oil-refinery-in-Canada-007.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMTEucG5n&enable=upscale&s=482667f37616904d44363f8367c41bca"}
-                st.image(image5["change"])
+                #st.info("How can this be good for anyone")
+                #image5 = {"change": "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2011/11/9/1320867220617/Oil-refinery-in-Canada-007.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMTEucG5n&enable=upscale&s=482667f37616904d44363f8367c41bca"}
+                #st.image(image5["change"])
+                video = {"vid": "https://youtu.be/8YQIaOldDU8"}
+                st.video(video['vid'])
             
 
 

@@ -115,7 +115,7 @@ def main():
             name_dict = {}
             df_pos = raw[raw['sentiment'] == sentiment]
             for i in range(len(df_pos)):
-                text = nlp(df.iloc[i, 1])
+                text = nlp(raw.iloc[i, 1])
                 if text.ents:
                     for ent in text.ents:
                         if ent.label_ in ent_dict.keys():
